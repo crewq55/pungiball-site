@@ -13,11 +13,13 @@
   .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
   /* ---------- HERO ---------- */
-  .pugno { font-size: clamp(54px, 10vw, 88px); filter: drop-shadow(0 0 22px #ff8f00);
-           animation: pugno 2.4s ease-in-out infinite; }
-  @keyframes pugno { 0%,100% { transform: rotate(-6deg) } 50% { transform: rotate(6deg) } }
-  h1 { font-size: clamp(42px, 10vw, 72px); color: #ffd54a; letter-spacing: 4px;
-       text-shadow: 0 0 28px #ff8f00, 0 4px 0 #7a4a00; margin-top: 4px; }
+  .logo { width: min(430px, 84vw); margin-top: 4px;
+          filter: drop-shadow(0 14px 32px rgba(0,0,0,.65))
+                  drop-shadow(0 0 36px rgba(255,143,0,.3)); }
+  h1.sr, .sr { position: absolute; width: 1px; height: 1px;
+               overflow: hidden; clip: rect(0 0 0 0); }
+  .studio { margin-top: 14px; color: #8d9bd4; font-size: 13px; letter-spacing: 3px; }
+  .studio b { color: #cfd8ff; }
   .tag { font-size: clamp(16px, 4.4vw, 22px); color: #cfd8ff; margin-top: 12px;
          max-width: 640px; margin-inline: auto; line-height: 1.5; }
   .tag b { color: #ffd54a; }
@@ -58,15 +60,13 @@
   /* ---------- RANKED LADDER ---------- */
   .ladder { display: flex; align-items: center; justify-content: center;
             flex-wrap: wrap; gap: 14px; margin-top: 6px; }
-  .league { display: flex; align-items: center; gap: 8px; padding: 12px 24px;
-            border-radius: 999px; background: rgba(255,255,255,.045);
-            border: 1px solid rgba(255,255,255,.12); font-size: 15px;
-            font-weight: bold; letter-spacing: 2px; }
-  .lg-bronze { color: #e0955a; }
-  .lg-master { color: #ff6f8d; border-color: rgba(255,96,130,.55);
-               text-shadow: 0 0 12px #ff3050;
-               box-shadow: 0 0 22px rgba(255,48,80,.35); }
-  .arrow { color: #8d9bd4; font-size: 22px; }
+  .badge-lg { height: clamp(96px, 20vw, 150px);
+              filter: drop-shadow(0 8px 16px rgba(0,0,0,.6));
+              transition: transform .16s; }
+  .badge-lg:hover { transform: scale(1.07); }
+  .badge-lg.master { filter: drop-shadow(0 8px 16px rgba(0,0,0,.6))
+                            drop-shadow(0 0 26px rgba(170,60,255,.45)); }
+  .arrow { color: #8d9bd4; font-size: 30px; font-weight: bold; }
   .ladder-sub { color: #8d9bd4; font-size: 14px; margin-top: 14px; }
   .ladder-sub b { color: #cfd8ff; }
 
@@ -91,8 +91,9 @@
 <body>
 <div class="wrap">
 
-  <div class="pugno">&#x1F94A;</div>
-  <h1>PUNGiBALL</h1>
+  <img class="logo" src="shots/logo.png" alt="PUNGiBALL — Arcade PunchKing logo">
+  <h1 class="sr">PUNGiBALL</h1>
+  <div class="studio">A GAME BY <b>AGASTUDIO</b></div>
   <p class="tag">Step up to the machine. Aim. <b>Punch.</b><br>
      The arcade classic rebuilt for your phone — beat the high score, crush your rivals, own the leaderboard.</p>
   <div class="store">
@@ -126,9 +127,9 @@
 
   <h2>CLIMB THE RANKS</h2>
   <div class="ladder">
-    <div class="league lg-bronze">&#x1F948; BRONZE</div>
+    <img class="badge-lg" src="shots/bronze.png" alt="Bronze league badge">
     <div class="arrow">&#x27A1;&#xFE0F;</div>
-    <div class="league lg-master">&#x1F451; MASTER</div>
+    <img class="badge-lg master" src="shots/master.png" alt="Master league badge">
   </div>
   <p class="ladder-sub">Everyone starts at the bottom. Only the hardest punches reach <b>MASTER</b>.</p>
 
@@ -146,7 +147,7 @@
     <a href="mailto:returnking88@gmail.com">Contact</a>
   </div>
 
-  <footer>PUNGiBALL &copy; 2025 &middot; Made with sweat and fists</footer>
+  <footer>PUNGiBALL &copy; 2025 <b>AgaStudio</b> &middot; Made with sweat and fists</footer>
 </div>
 </body>
 </html>

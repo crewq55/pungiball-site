@@ -3,67 +3,127 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PUNGiBALL — Arcade Punch Machine</title>
-<meta name="description" content="PUNGiBALL: the arcade punch machine game. Train, fight online 1v1, climb the weekly leaderboards.">
+<title>PUNGiBALL — Arcade Punch Machine Game</title>
+<meta name="description" content="PUNGiBALL: step up to the machine, land the perfect punch and climb the world rankings. Free on Android — real-time PvP, weekly leaderboards, unlockable fighters.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', Arial, sans-serif; color: #eee;
-         background: radial-gradient(circle at 50% 20%, #1a2a6c 0%, #0a0f2e 75%);
-         min-height: 100vh; display: flex; flex-direction: column;
-         align-items: center; text-align: center; padding: 40px 20px 90px; }
-  .pugno { font-size: clamp(52px, 10vw, 84px); filter: drop-shadow(0 0 20px #ff8f00); }
-  h1 { font-size: clamp(38px, 9vw, 64px); color: #ffd54a; letter-spacing: 3px;
-       text-shadow: 0 0 26px #ff8f00, 0 4px 0 #7a4a00; margin-top: 6px; }
-  .sub { font-size: clamp(15px, 4vw, 20px); color: #9fb3ff; margin-top: 12px; max-width: 560px; }
-  .badge { margin-top: 18px; font-size: 13px; letter-spacing: 2px; color: #8effa0;
-           border: 1px solid #2e7d4f; border-radius: 999px; padding: 6px 16px;
-           background: rgba(46,125,79,.15); }
-  .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-           gap: 14px; max-width: 860px; width: 100%; margin-top: 44px; }
+         background: radial-gradient(circle at 50% 15%, #1a2a6c 0%, #0a0f2e 70%);
+         min-height: 100vh; padding: 48px 0 80px; }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px; text-align: center; }
+
+  /* ---------- HERO ---------- */
+  .pugno { font-size: clamp(54px, 10vw, 88px); filter: drop-shadow(0 0 22px #ff8f00);
+           animation: pugno 2.4s ease-in-out infinite; }
+  @keyframes pugno { 0%,100% { transform: rotate(-6deg) } 50% { transform: rotate(6deg) } }
+  h1 { font-size: clamp(42px, 10vw, 72px); color: #ffd54a; letter-spacing: 4px;
+       text-shadow: 0 0 28px #ff8f00, 0 4px 0 #7a4a00; margin-top: 4px; }
+  .tag { font-size: clamp(16px, 4.4vw, 22px); color: #cfd8ff; margin-top: 12px;
+         max-width: 640px; margin-inline: auto; line-height: 1.5; }
+  .tag b { color: #ffd54a; }
+  .store { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px;
+         border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; }
+  .btn-android { background: linear-gradient(180deg, #8effa0, #2e9e5b); color: #06210f;
+                 box-shadow: 0 4px 0 #17572f; }
+  .btn-android:hover { filter: brightness(1.12); }
+  .btn-ghost { border: 1px solid #4a5ba8; color: #9fb3ff; }
+  .free { margin-top: 10px; color: #6f7db3; font-size: 13px; letter-spacing: 2px; }
+
+  /* ---------- SCREENSHOTS (stile Play Store) ---------- */
+  .shots { margin-top: 52px; display: flex; gap: 16px; overflow-x: auto;
+           padding: 10px 4px 22px; scroll-snap-type: x mandatory; }
+  .shots::-webkit-scrollbar { height: 8px; }
+  .shots::-webkit-scrollbar-thumb { background: #3d4c8f; border-radius: 4px; }
+  .shot { flex: 0 0 auto; width: clamp(180px, 26vw, 250px); aspect-ratio: 9/16;
+          border-radius: 18px; overflow: hidden; scroll-snap-align: center;
+          border: 2px solid rgba(255,213,74,.35);
+          box-shadow: 0 10px 30px rgba(0,0,0,.55), 0 0 18px rgba(255,143,0,.15);
+          transition: transform .18s; }
+  .shot:hover { transform: scale(1.03); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block;
+              filter: saturate(1.15) contrast(1.06); }
+
+  /* ---------- FEATURES ---------- */
+  h2 { font-size: clamp(24px, 6vw, 34px); color: #ffd54a; letter-spacing: 2px;
+       margin: 56px 0 22px; text-shadow: 0 0 18px rgba(255,143,0,.5); }
+  .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           gap: 14px; text-align: left; }
   .feat { background: rgba(255,255,255,.045); border: 1px solid rgba(255,213,74,.18);
-          border-radius: 14px; padding: 18px 16px; text-align: left;
-          transition: transform .15s, border-color .15s; }
+          border-radius: 14px; padding: 18px; transition: transform .15s, border-color .15s; }
   .feat:hover { transform: translateY(-3px); border-color: rgba(255,213,74,.55); }
-  .feat b { display: block; color: #ffd54a; font-size: 15px; margin-bottom: 6px; }
-  .feat span { color: #b9c6f5; font-size: 13.5px; line-height: 1.45; }
-  .links { margin-top: 46px; }
-  .links a { display: inline-block; margin: 6px; padding: 12px 26px;
-             background: linear-gradient(180deg, #ffd54a, #ff8f00); color: #1a1200;
-             font-weight: bold; border-radius: 10px; text-decoration: none;
-             box-shadow: 0 4px 0 #7a4a00; }
-  .links a:hover { filter: brightness(1.12); }
-  footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px;
-           background: rgba(10,15,46,.85); backdrop-filter: blur(4px);
-           color: #6f7db3; font-size: .85em; }
+  .feat b { display: block; color: #ffd54a; font-size: 15px; margin-bottom: 7px; }
+  .feat span { color: #b9c6f5; font-size: 13.5px; line-height: 1.5; }
+
+  /* ---------- COMING SOON ---------- */
+  .soon { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+          gap: 14px; text-align: left; }
+  .soon .feat { border-color: rgba(142,255,160,.25); }
+  .soon .feat b { color: #8effa0; }
+  .pill { display: inline-block; font-size: 10px; letter-spacing: 2px; color: #06210f;
+          background: #8effa0; border-radius: 999px; padding: 2px 10px;
+          vertical-align: middle; margin-left: 8px; }
+
+  /* ---------- FOOTER ---------- */
+  .legal { margin-top: 54px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .legal a { color: #9fb3ff; text-decoration: none; padding: 10px 18px;
+             border: 1px solid #2c3a75; border-radius: 10px; font-size: 14px; }
+  .legal a:hover { border-color: #ffd54a; color: #ffd54a; }
+  footer { margin-top: 44px; color: #6f7db3; font-size: .85em; }
   footer a { color: #9fb3ff; }
 </style>
 </head>
 <body>
+<div class="wrap">
+
   <div class="pugno">&#x1F94A;</div>
   <h1>PUNGiBALL</h1>
-  <p class="sub">The arcade punch machine game — hit the ball, score your best punch, climb the ranks.</p>
-  <div class="badge">FREE &middot; PC &amp; ANDROID</div>
+  <p class="tag">Step up to the machine. Aim. <b>Punch.</b><br>
+     The arcade classic rebuilt for your phone — beat the high score, crush your rivals, own the leaderboard.</p>
+  <div class="store">
+    <a class="btn btn-android" href="#">&#x25B6;&nbsp; Get it on Android</a>
+    <a class="btn btn-ghost" href="#shots">Screenshots</a>
+  </div>
+  <div class="free">FREE TO PLAY</div>
 
-  <div class="feats">
-    <div class="feat"><b>&#x1F3AF; Arcade Punch Machine</b>
-      <span>Aim, time it right, land the perfect hit — the harder you punch, the higher you score.</span></div>
-    <div class="feat"><b>&#x2694;&#xFE0F; Online 1v1 Battles</b>
-      <span>Real-time PvP matches against other players. Three punches each, best total wins.</span></div>
-    <div class="feat"><b>&#x1F3C6; Weekly Leaderboards</b>
-      <span>Two rankings reset every Monday: TOP RANK for wins and TOP MAX SCORE for your best 3 punches.</span></div>
-    <div class="feat"><b>&#x1F4CB; Daily &amp; Weekly Missions</b>
-      <span>Progressive missions that grow with your level — win matches, upgrade, hit perfects.</span></div>
-    <div class="feat"><b>&#x1F9CD; Unlockable Fighters</b>
-      <span>Collect characters and upgrade their stats: power, focus and rage.</span></div>
-    <div class="feat"><b>&#x1F30D; Play Your Way</b>
-      <span>Google, email or guest login &middot; 6 languages &middot; random arenas: city, desert and the arcade room.</span></div>
+  <div class="shots" id="shots">
+    <div class="shot"><img src="shots/2.png" alt="The arcade room — neon cabinets and animated screens"></div>
+    <div class="shot"><img src="shots/1.png" alt="The punch machine dial — aim for the perfect hit"></div>
+    <div class="shot"><img src="shots/3.png" alt="A 929-point punch at level 2"></div>
+    <div class="shot"><img src="shots/4.png" alt="Score 628 at level 3 — every punch counts"></div>
   </div>
 
-  <div class="links">
+  <h2>HOW HARD CAN YOU HIT?</h2>
+  <div class="feats">
+    <div class="feat"><b>&#x1F94A; The Real Arcade Feel</b>
+      <span>The legendary punch-ball machine, reborn. Watch the dial fly — 300 is only the beginning.</span></div>
+    <div class="feat"><b>&#x2694;&#xFE0F; Real-Time 1v1 Battles</b>
+      <span>Face players online in punch-for-punch duels. Three hits each. Only one walks away the winner.</span></div>
+    <div class="feat"><b>&#x1F3C6; Two Weekly Leaderboards</b>
+      <span>TOP RANK for the grinders. TOP MAX SCORE for the heavy hitters. Reset every Monday — the podium is never safe.</span></div>
+    <div class="feat"><b>&#x1F4CB; Missions That Push You</b>
+      <span>Daily and weekly goals built around your level. Smash them, earn coins, power up.</span></div>
+    <div class="feat"><b>&#x1F9CD; Build Your Fighter</b>
+      <span>Unlock new characters and train power, focus and rage. Weak hands don't win fights.</span></div>
+    <div class="feat"><b>&#x1F3AE; Play Anywhere</b>
+      <span>Google, email or guest login. Six languages. Arenas that change every match — city, desert, the arcade room.</span></div>
+  </div>
+
+  <h2>COMING SOON</h2>
+  <div class="soon">
+    <div class="feat"><b>&#x1F3DF;&#xFE0F; Friend Challenges<span class="pill">SOON</span></b>
+      <span>Create a private room, share the code, settle who's the real king of the machine — friend vs friend.</span></div>
+    <div class="feat"><b>&#x1F3C5; Tournaments<span class="pill">SOON</span></b>
+      <span>Bracketed showdowns for the whole leaderboard. Enter, survive, take the crown.</span></div>
+  </div>
+
+  <div class="legal">
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms of Service</a>
+    <a href="mailto:returnking88@gmail.com">Contact</a>
   </div>
 
-  <footer>Contact: <a href="mailto:returnking88@gmail.com">returnking88@gmail.com</a> &middot; PUNGiBALL &copy; 2025</footer>
+  <footer>PUNGiBALL &copy; 2025 &middot; Made with sweat and fists</footer>
+</div>
 </body>
 </html>

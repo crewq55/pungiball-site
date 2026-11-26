@@ -4,29 +4,66 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PUNGiBALL — Arcade Punch Machine</title>
+<meta name="description" content="PUNGiBALL: the arcade punch machine game. Train, fight online 1v1, climb the weekly leaderboards.">
 <style>
-  body { font-family: Arial, Helvetica, sans-serif; margin: 0; color: #eee;
-         background: radial-gradient(circle at 50% 30%, #1a2a6c 0%, #0a0f2e 70%);
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #eee;
+         background: radial-gradient(circle at 50% 20%, #1a2a6c 0%, #0a0f2e 75%);
          min-height: 100vh; display: flex; flex-direction: column;
-         align-items: center; justify-content: center; text-align: center; }
-  h1 { font-size: 3em; color: #ffd54a; text-shadow: 0 0 24px #ff8f00; margin: 0; }
-  p.sub { color: #9fb3ff; margin-top: 8px; }
-  .links { margin-top: 40px; }
-  .links a { display: inline-block; margin: 8px; padding: 12px 28px;
-             background: #ffd54a; color: #111; font-weight: bold;
-             border-radius: 10px; text-decoration: none; }
-  .links a:hover { background: #fff; }
-  footer { position: absolute; bottom: 16px; color: #566; font-size: .85em; }
+         align-items: center; text-align: center; padding: 40px 20px 90px; }
+  .pugno { font-size: clamp(52px, 10vw, 84px); filter: drop-shadow(0 0 20px #ff8f00); }
+  h1 { font-size: clamp(38px, 9vw, 64px); color: #ffd54a; letter-spacing: 3px;
+       text-shadow: 0 0 26px #ff8f00, 0 4px 0 #7a4a00; margin-top: 6px; }
+  .sub { font-size: clamp(15px, 4vw, 20px); color: #9fb3ff; margin-top: 12px; max-width: 560px; }
+  .badge { margin-top: 18px; font-size: 13px; letter-spacing: 2px; color: #8effa0;
+           border: 1px solid #2e7d4f; border-radius: 999px; padding: 6px 16px;
+           background: rgba(46,125,79,.15); }
+  .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+           gap: 14px; max-width: 860px; width: 100%; margin-top: 44px; }
+  .feat { background: rgba(255,255,255,.045); border: 1px solid rgba(255,213,74,.18);
+          border-radius: 14px; padding: 18px 16px; text-align: left;
+          transition: transform .15s, border-color .15s; }
+  .feat:hover { transform: translateY(-3px); border-color: rgba(255,213,74,.55); }
+  .feat b { display: block; color: #ffd54a; font-size: 15px; margin-bottom: 6px; }
+  .feat span { color: #b9c6f5; font-size: 13.5px; line-height: 1.45; }
+  .links { margin-top: 46px; }
+  .links a { display: inline-block; margin: 6px; padding: 12px 26px;
+             background: linear-gradient(180deg, #ffd54a, #ff8f00); color: #1a1200;
+             font-weight: bold; border-radius: 10px; text-decoration: none;
+             box-shadow: 0 4px 0 #7a4a00; }
+  .links a:hover { filter: brightness(1.12); }
+  footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px;
+           background: rgba(10,15,46,.85); backdrop-filter: blur(4px);
+           color: #6f7db3; font-size: .85em; }
   footer a { color: #9fb3ff; }
 </style>
 </head>
 <body>
-<h1>PUNGiBALL</h1>
-<p class="sub">Arcade punch machine game — train, fight, climb the leaderboard.</p>
-<div class="links">
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="terms.html">Terms of Service</a>
-</div>
-<footer>Contact: <a href="mailto:returnking88@gmail.com">returnking88@gmail.com</a></footer>
+  <div class="pugno">&#x1F94A;</div>
+  <h1>PUNGiBALL</h1>
+  <p class="sub">The arcade punch machine game — hit the ball, score your best punch, climb the ranks.</p>
+  <div class="badge">FREE &middot; PC &amp; ANDROID</div>
+
+  <div class="feats">
+    <div class="feat"><b>&#x1F3AF; Arcade Punch Machine</b>
+      <span>Aim, time it right, land the perfect hit — the harder you punch, the higher you score.</span></div>
+    <div class="feat"><b>&#x2694;&#xFE0F; Online 1v1 Battles</b>
+      <span>Real-time PvP matches against other players. Three punches each, best total wins.</span></div>
+    <div class="feat"><b>&#x1F3C6; Weekly Leaderboards</b>
+      <span>Two rankings reset every Monday: TOP RANK for wins and TOP MAX SCORE for your best 3 punches.</span></div>
+    <div class="feat"><b>&#x1F4CB; Daily &amp; Weekly Missions</b>
+      <span>Progressive missions that grow with your level — win matches, upgrade, hit perfects.</span></div>
+    <div class="feat"><b>&#x1F9CD; Unlockable Fighters</b>
+      <span>Collect characters and upgrade their stats: power, focus and rage.</span></div>
+    <div class="feat"><b>&#x1F30D; Play Your Way</b>
+      <span>Google, email or guest login &middot; 6 languages &middot; random arenas: city, desert and the arcade room.</span></div>
+  </div>
+
+  <div class="links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </div>
+
+  <footer>Contact: <a href="mailto:returnking88@gmail.com">returnking88@gmail.com</a> &middot; PUNGiBALL &copy; 2025</footer>
 </body>
 </html>
